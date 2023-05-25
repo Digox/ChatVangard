@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conversas</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    
+    #console {
+      width: 600px;
+      height: 400px;
+      border: 1px solid #0f0;
+      overflow: auto;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    
+    #input-container {
+      display: flex;
+    }
+    
+    #prompt {
+      color: #0f0;
+      margin-right: 5px;
+    }
+    
+    #input {
+      flex-grow: 1;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    
+    #submit-btn {
+      background-color: #0f0;
+      border: none;
+      color: #000;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function enviarMensagem() {
+      var mensagem = document.getElementById('input').value;
+      var consoleOutput = document.getElementById('console');
+      consoleOutput.innerHTML += '<p><span id="prompt">C:\></span> ' + mensagem + '</p>';
+      document.getElementById('input').value = '';
+    }
+    
+    function verificarTeclaPressionada(event) {
+      if (event.keyCode === 13) { // Verifica se a tecla pressionada é Enter (código 13)
+        enviarMensagem();
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="console"></div>
+  
+  <div id="input-container">
+    <span id="prompt">C:\></span>
+    <input type="text" id="input" autofocus onkeydown="verificarTeclaPressionada(event)">
+    <button id="submit-btn" onclick="enviarMensagem()">Enviar</button>
+  </div>
+</body>
+</html>
